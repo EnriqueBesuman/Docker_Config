@@ -20,6 +20,6 @@ services:
     volumes:
       - /COMIC/COMIC10:/comics
 #    command: YACReaderLibraryServer create-library "Comic 10" /comics
-    labels: # Labels par What's up Docker
+    labels: # Labels para What's up Docker
       - wud.display.name=YACServer
       - wud.display.icon=mdi:emoticon-happy-outline
