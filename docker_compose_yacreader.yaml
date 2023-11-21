@@ -6,7 +6,7 @@
 #   docker exec yacserver YACReaderLibraryServer list-libraries
 # - Eliminar una librería:
 #   docker exec yacserver YACReaderLibraryServer remove-library <library-name>
-version: "3"
+version: "3.8"
 
 services:
   flame:
