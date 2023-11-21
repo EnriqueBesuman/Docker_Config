@@ -12,7 +12,7 @@ services:
   yacserver:
     image: muallin/yacreaderlibrary-server-docker:latest
     container_name: "yacserver"
-    hostname: "yacserver"
+#    hostname: "yacserver"
     volumes:
       - /COMIC/COMIC10:/comics
     ports:
