@@ -1,4 +1,6 @@
 # INICIAR DESPUES DE NGINX!!!!!!!!!!!
+version: "3.8"
+
 services:
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
