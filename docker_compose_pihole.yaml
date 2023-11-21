@@ -27,6 +27,6 @@ services:
       - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
-    labels: # Labels par What's up Docker
+    labels: # Labels para What's up Docker
       - wud.display.name=Pi Hole
       - wud.display.icon=mdi:pi-hole
