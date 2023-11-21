@@ -13,6 +13,6 @@ services:
       - /COMIC/PRUEBAS:/library
       - /COMIC/PRUEBAS:/imports
       - /docker/comixed/database:/root/.comixed 
-    labels: # Labels par What's up Docker
+    labels: # Labels para What's up Docker
       - wud.display.name=ComiXed
       - wud.display.icon=mdi:emoticon-happy-outline
