@@ -9,13 +9,14 @@
 version: "3.8"
 
 services:
-  flame:
+  yacserver:
     image: muallin/yacreaderlibrary-server-docker
-    container_name: yacserver
+    container_name: "yacserver"
     volumes:
       - /COMIC/COMIC10:/comics
     ports:
       - 6969:8080
+#    command: YACReaderLibraryServer create-library "Comic 10" /comics
     restart: unless-stopped
     labels:
       - wud.display.name=YACServer
