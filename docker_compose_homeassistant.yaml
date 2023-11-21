@@ -4,22 +4,22 @@ services:
 # - Instalar SAI
 #   https://blog.crstian.me/post/2022-08-05-integrar-sai-salicru-sps-500-one-en-home-assistant-con-docker/
 #   https://networkupstools.org/docs/man/genericups.html
-  nut-upsd:
-    image: upshift/nut-upsd
-    container_name: "nut-upsd"
-    restart: unless-stopped
-    ports:
-      - 3493:3493
-    environment:
-      - TZ=Europe/Madrid
-      - UPS_DRIVER=blazer_usb
-      - API_USER=upsmon # Opcional, este es el user por defecto
-      - API_PASSWORD=secret # Opcional, esta es la password por defecto
-    devices:
-      - /dev/bus/usb/001/003 # Para obtner el ubs: lsusb
-    labels: # Labels para What's up Docker
-      - wud.display.name=Network UPS Tools
-      - wud.display.icon=mdi:car-battery
+#  nut-upsd:
+#    image: upshift/nut-upsd
+#    container_name: "nut-upsd"
+#    restart: unless-stopped
+#    ports:
+#      - 3493:3493
+#    environment:
+#      - TZ=Europe/Madrid
+#      - UPS_DRIVER=blazer_usb
+#      - API_USER=upsmon # Opcional, este es el user por defecto
+#      - API_PASSWORD=secret # Opcional, esta es la password por defecto
+#    devices:
+#      - /dev/bus/usb/001/003 # Para obtner el ubs: lsusb
+#    labels: # Labels para What's up Docker
+#      - wud.display.name=Network UPS Tools
+#      - wud.display.icon=mdi:car-battery
 
 # - Eliminar entidades sin identificador único:
 #   Ejecutar servicio "Recorder: Purge Entities"
@@ -32,7 +32,7 @@ services:
 # - Notificaciones push:
 #   https://www.home-assistant.io/integrations/html5
   homeassistant:
-    depends_on: [nut-upsd]
+#    depends_on: [nut-upsd]
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: "homeassistant"
     restart: unless-stopped
