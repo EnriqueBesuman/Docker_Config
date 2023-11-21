@@ -1,0 +1,21 @@
+# - Crear una nueva librería:
+#   docker exec yacserver YACReaderLibraryServer create-library <library-name> /comics
+# - Actualizar una librería (p.e. si se han añadido comics):
+#   docker exec yacserver YACReaderLibraryServer update-library /comics
+# - Listar librerías existentes:
+#   docker exec yacserver YACReaderLibraryServer list-libraries
+# - Eliminar una librería:
+#   docker exec yacserver YACReaderLibraryServer remove-library <library-name>
+
+services:
+  flame:
+    image: muallin/yacreaderlibrary-server-docker
+    container_name: yacserver
+    volumes:
+      - /COMIC/COMIC10:/comics
+    ports:
+      - 6969:8080
+    restart: unless-stopped
+    labels:
+      - wud.display.name=YACServer
+      - wud.display.icon=mdi:emoticon-happy-outline
