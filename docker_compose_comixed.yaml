@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  flame:
+    image: comixed/comixed:latest
+    container_name: "comixed"
+    restart: unless-stopped
+    ports:
+      - 7171:7171
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - /COMIC/PRUEBAS:/library
+      - /COMIC/PRUEBAS:/imports
+      - /docker/comixed/database:/root/.comixed 
+    labels: # Labels par What's up Docker
+      - wud.display.name=ComiXed
+      - wud.display.icon=mdi:emoticon-happy-outline
