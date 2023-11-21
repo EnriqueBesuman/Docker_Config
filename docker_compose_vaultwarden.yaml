@@ -1,0 +1,23 @@
+# https://www.manelrodero.com/blog/instalacion-de-vaultwarden-en-docker
+version: "3.8"
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    volumes:
+      - /docker/vaultwarden/config:/data/
+    environment:
+      - TZ=Europe/Madrid
+      - DOMAIN=https://vault.mykasa.mooo.com
+      - ADMIN_TOKEN=ffCXqP6HiRhsqOvi7WRdTci4lzFjP8mNSzqKCp9WIQVfqIvyGkNjsVIVq/dMpomI
+    labels: # Labels para What's up Docker
+      - wud.display.name=Vaultwarden
+      #- wud.display.icon=mdi:lock-outline
+      - wud.display.icon=si:vaultwarden
+
+networks:
+  default:
+    name: nginx_customnetwork
+    external: true
