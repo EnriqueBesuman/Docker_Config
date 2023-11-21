@@ -12,13 +12,14 @@ services:
   yacserver:
     image: muallin/yacreaderlibrary-server-docker:latest
     container_name: "yacserver"
-#    hostname: "yacserver"
-    volumes:
-      - /COMIC/COMIC10:/comics
+    restart: unless-stopped
     ports:
       - 6969:8080
+    environment:
+      - TZ=Europe/Madrid
+    volumes:
+      - /COMIC/COMIC10:/comics
 #    command: YACReaderLibraryServer create-library "Comic 10" /comics
-    restart: unless-stopped
     labels: # Labels par What's up Docker
       - wud.display.name=YACServer
       - wud.display.icon=mdi:emoticon-happy-outline
