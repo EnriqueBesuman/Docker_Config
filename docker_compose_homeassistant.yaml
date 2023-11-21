@@ -1,9 +1,9 @@
 version: "3.8"
 
 services:
- - Instalar SAI
-   https://blog.crstian.me/post/2022-08-05-integrar-sai-salicru-sps-500-one-en-home-assistant-con-docker/
-   https://networkupstools.org/docs/man/genericups.html
+# - Instalar SAI
+#   https://blog.crstian.me/post/2022-08-05-integrar-sai-salicru-sps-500-one-en-home-assistant-con-docker/
+#   https://networkupstools.org/docs/man/genericups.html
   nut-upsd:
     image: upshift/nut-upsd
     container_name: "nut-upsd"
