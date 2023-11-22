@@ -18,19 +18,43 @@ services:
     #  - 53:53/udp
     #  - 67:67/udp # Only required if you are using Pi-hole as your DHCP server
     #  - 8080:80/tcp # Interfaz web
+    ports:
+      - target: 53
+        published: 53
+        protocol: tcp
+        mode: host
+      - target: 53
+        published: 53
+        protocol: udp
+        mode: host
+      - target: 67
+        published: 67
+        protocol: udp
+        mode: host
+      - target: 8080
+        published: 80
+        protocol: tcp
+        mode: host    
     network_mode: host
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed    
     deploy:
       mode: replicated
       replicas: 1
-          
+# TO-DO
+#      limits:
+#        cpus: '0.50'
+#        memory: 50M
+#        pids: 1
+#      reservations:
+#        cpus: '0.25'
+#        memory: 20M          
     environment:
       - TZ=Europe/Madrid
       - WEB_PORT=831
     volumes:
       - /docker/pihole/config:/etc/pihole
       - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
-    cap_add:
-      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     labels: # Labels para What's up Docker
       - wud.display.name=Pi Hole
       - wud.display.icon=mdi:pi-hole
