@@ -30,6 +30,10 @@ services:
       - target: 67
         published: 67
         protocol: udp
+        mode: host      
+      - target: 80
+        published: 831
+        protocol: udp
         mode: host
     network_mode: host
     cap_add:
