@@ -1,4 +1,5 @@
 # https://www.manelrodero.com/blog/instalacion-de-vaultwarden-en-docker
+
 version: "3.8"
 
 services:
@@ -10,8 +11,8 @@ services:
       - /docker/vaultwarden/config:/data/
     environment:
       - TZ=Europe/Madrid
-      - DOMAIN=https://vault.mykasa.mooo.com
-      - ADMIN_TOKEN=ffCXqP6HiRhsqOvi7WRdTci4lzFjP8mNSzqKCp9WIQVfqIvyGkNjsVIVq/dMpomI
+      - DOMAIN=${VAULT_URL}
+      - ADMIN_TOKEN=${VAULT_TOKEN}
     labels: # Labels para What's up Docker
       - wud.display.name=Vaultwarden
       #- wud.display.icon=mdi:lock-outline
