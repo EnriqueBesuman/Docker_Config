@@ -5,6 +5,8 @@ services:
 ###################
 # WHATS UP DOCKER #
 ###################
+#
+# https://192.168.1.254:3000
 
   whatsupdocker:
     image: fmartinou/whats-up-docker
@@ -35,6 +37,8 @@ services:
 #############
 # DUPLICATI #
 #############
+#
+# https://192.168.1.254:8200
 
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
