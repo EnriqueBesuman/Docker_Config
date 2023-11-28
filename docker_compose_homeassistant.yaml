@@ -58,27 +58,3 @@ services:
 #      - TZ=Europe/Madrid
 #    volumes:
 #      - /docker/nodered/config:/data
-    
-  vscode:
-    depends_on: [homeassistant]
-    image: lscr.io/linuxserver/code-server
-    container_name: "vscode"
-    restart: unless-stopped
-    ports:
-      - 8443:8443
-    environment:
-      - TZ=Europe/Madrid
-      - PUID=1000
-      - PGID=1000
-      - PASSWORD= #optional
-      - HASHED_PASSWORD= #optional
-      - SUDO_PASSWORD= #optional
-      - SUDO_PASSWORD_HASH= #optional
-      - PROXY_DOMAIN= #optional
-      - DEFAULT_WORKSPACE=/config/workspace #optional
-    volumes:
-      - /docker/vscode/config:/config
-      - /docker/homeassistant/config:/config/workspace
-    labels: # Labels para What's up Docker
-      - wud.display.name=Visual Code
-      - wud.display.icon=mdi:file-code
