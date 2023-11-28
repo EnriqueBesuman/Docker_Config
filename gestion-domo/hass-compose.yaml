@@ -51,7 +51,27 @@ services:
 ###############
 # ZIGBEE2MQTT #
 ###############
+#
+# http://http://192.168.1.254:833
 
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    container_name: zigbee2mqtt
+    restart: unless-stopped
+    ports:
+      - 833:8080
+    network_mode: host
+    volumes:
+      - /docker/zigbee2mqtt/data:/app/data
+      - /run/udev:/run/udev:ro
+    environment:
+      - TZ=Europe/Madrid
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    labels: # Labels para What's up Docker
+      - wud.display.name=ZigBee2Mqtt
+      - wud.display.icon=si:zigbee
+      
 #################
 # HOMEASSISTANT #
 #################
