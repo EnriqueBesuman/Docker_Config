@@ -1,3 +1,5 @@
+# https://192.168.1.254:6969
+#
 # - Crear una nueva librería:
 #   docker exec yacserver YACReaderLibraryServer create-library <library-name> /comics
 # - Actualizar una librería (p.e. si se han añadido comics):
@@ -11,14 +13,14 @@ version: "3.8"
 services:
   yacserver:
     image: muallin/yacreaderlibrary-server-docker:latest
-    container_name: "yacserver"
+    container_name: yacserver
     restart: unless-stopped
     ports:
       - 6969:8080
-    environment:
-      - TZ=Europe/Madrid
     volumes:
       - /COMIC/COMIC10:/comics
+    environment:
+      - TZ=Europe/Madrid
 #    command: YACReaderLibraryServer create-library "Comic 10" /comics
     labels: # Labels para What's up Docker
       - wud.display.name=YACServer
