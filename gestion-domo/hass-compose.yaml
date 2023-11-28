@@ -25,6 +25,33 @@ services:
       - wud.display.name=Network UPS Tools
       - wud.display.icon=mdi:car-battery
 
+########
+# MQTT #
+########
+#
+# https://www.youtube.com/watch?v=on9JfmpaUJ0&list=PLIr0LNE5Lat2RifKJbH2xaqIHPuFEpYnf&index=7
+# https://www.homeautomationguy.io/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant/
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    restart: unless-stopped
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - /docker/mqtt/config:/mosquitto/config
+      - /docker/mqtt/data:/mosquitto/data
+      - /docker/mqtt/log:/mosquitto/log
+    environment:
+      - TZ=Europe/Madrid
+    labels: # Labels para What's up Docker
+      - wud.display.name=MQTT
+      - wud.display.icon=si:mqtt
+
+###############
+# ZIGBEE2MQTT #
+###############
+
 #################
 # HOMEASSISTANT #
 #################
