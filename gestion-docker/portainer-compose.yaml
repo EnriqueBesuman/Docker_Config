@@ -1,0 +1,22 @@
+# Ejecutar con: docker-compose -f docker-compose-portainer.yml up -d
+
+version: "3.2"
+
+services:
+  portainer:
+    image: portainer/portainer-ee:latest
+    container_name: portainer
+    hostname: portainer
+#    pull_policy: always
+    restart: always
+    ports:
+      - 9443:9443
+      - 8000:8000
+    networks:
+      - -network
+    volumes:
+      - /docker/portainer/config:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - wud.display.name=Portainer
+      - wud.display.icon=mdi:train-car-container
