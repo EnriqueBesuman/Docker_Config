@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+
+###################
+# WHATS UP DOCKER #
+###################
+
+  whatsupdocker:
+    image: fmartinou/whats-up-docker
+    container_name: whatsupdocker
+    ports:
+      - 3000:3000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /docker/whatsupdocker/config/:/store
+    environment:
+      - TZ=Europe/Paris      
+      - WUD_REGISTRY_LSCR_TOKEN=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      
+      - WUD_TRIGGER_SMTP_GMAIL_HOST=smtp.gmail.com
+      - WUD_TRIGGER_SMTP_GMAIL_PORT=465
+      - WUD_TRIGGER_SMTP_GMAIL_USER=${EMAIL_PERSONAL}
+      - WUD_TRIGGER_SMTP_GMAIL_PASS=${WUD_EMAIL_PERSONAL_PWD}
+      - WUD_TRIGGER_SMTP_GMAIL_FROM=${EMAIL_PERSONAL}
+      - WUD_TRIGGER_SMTP_GMAIL_TO=${EMAIL_PERSONAL}
+      - WUD_TRIGGER_SMTP_GMAIL_TLS_ENABLED=true       
+      - WUD_TRIGGER_MQTT_WUD_URL=${MQTT_URL}
+      - WUD_TRIGGER_MQTT_WUD_USER=${MQTT_USR}
+      - WUD_TRIGGER_MQTT_WUD_PASSWORD=${MQTT_PWD}
+      - WUD_TRIGGER_MQTT_WUD_HASS_ENABLED=true 
+    labels: # Labels de What's up Docker
+      - wud.display.name="What's up Docker"
+      - wud.display.icon=mdi:train-car-container
+
+#############
+# DUPLICATI #
+#############
+
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: "duplicati"
+    restart: unless-stopped
+    ports:
+      - "8200:8200"
+    volumes:
+      - /docker/duplicati/config:/config
+      - /docker/BACKUPS:/backups
+      - /docker:/docker
+    networks:
+      - nginx_customnetwork
+      - default
+    environment:
+      - TZ=Europe/Madrid
+      - PUID=0 # Importante mantener ID de root para evitar errores de acceso a los archivos
+      - PGID=0
+      - CLI_ARGS= # optional
+    labels: # Labels para What's up Docker
+      - wud.display.name=Duplicati
+      - wud.display.icon=mdi:cloud-upload-outline
