@@ -19,7 +19,7 @@ services:
       - 443:443
     networks:
       customnetwork:
-        ipv4_address: 172.22.0.2 # Asignamos IP fija para permitir configuración de proxies de Home Assistant
+        ipv4_address: 172.20.0.2 # Asignamos IP fija para permitir configuración de proxies de Home Assistant
     volumes:
       - /docker/nginx/config:/data
       - /docker/nginx/letsencrypt:/etc/letsencrypt
