@@ -50,9 +50,6 @@ services:
       - /docker/duplicati/config:/config
       - /docker/BACKUPS:/backups
       - /docker:/docker
-    networks:
-      - nginx_customnetwork
-      - default
     environment:
       - TZ=Europe/Madrid
       - PUID=0 # Importante mantener ID de root para evitar errores de acceso a los archivos
