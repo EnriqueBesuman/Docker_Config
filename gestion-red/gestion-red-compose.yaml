@@ -28,12 +28,6 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Nginx
       - wud.display.icon=mdi:arrow-decision
-      
-networks:
-  customnetwork:
-    ipam:
-      config:
-        - subnet: 172.22.0.0/16
 
 ##########
 # PIHOLE #
@@ -86,3 +80,9 @@ networks:
        # It tells whoami to start listening on 2001 instead of 80
        - --port=2001
        - --name=iamfoo
+      
+networks:
+  customnetwork:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16
