@@ -52,9 +52,10 @@ services:
 # ZIGBEE2MQTT #
 ###############
 #
-# http://http://192.168.1.254:833
+# http://192.168.1.254:833
 
   zigbee2mqtt:
+    depends_on: [mqtt]
     image: koenkk/zigbee2mqtt
     container_name: zigbee2mqtt
     restart: unless-stopped
@@ -76,6 +77,8 @@ services:
 # HOMEASSISTANT #
 #################
 #
+# https://https://192.168.1.254:8123/
+#
 # - Eliminar entidades sin identificador único:
 #   Ejecutar servicio "Recorder: Purge Entities"
 #   Cerrar y volver a abrir sesión
@@ -88,7 +91,9 @@ services:
 #   https://www.home-assistant.io/integrations/html5
 
   hass:
-    depends_on: [nut-upsd]
+    depends_on: 
+      - nut-upsd
+      - zigbee2mqtt
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: hass
     restart: unless-stopped
