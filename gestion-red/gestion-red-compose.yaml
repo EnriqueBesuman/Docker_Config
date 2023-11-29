@@ -5,7 +5,7 @@ services:
 # NGINX #
 #########
 #
-# https://192.168.1.254:443
+# http://192.168.1.254:81
 #
 # https://hub.docker.com/_/nginx
 
@@ -33,7 +33,7 @@ services:
 # PIHOLE #
 ##########
 #
-# https://192.168.1.254:8200
+# https://192.168.1.254:831
 #
 # https://github.com/pi-hole/docker-pi-hole/ 
 # https://docs.pi-hole.net/
@@ -64,6 +64,22 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Pi Hole
       - wud.display.icon=mdi:pi-hole
+
+##########
+# WHOAMI #
+##########
+#
+# https://192.168.1.254:2001
+#
+# https://hub.docker.com/r/traefik/whoami
+
+  whoami:
+    image: traefik/whoami
+    container_name: whoami    
+    command:
+       # It tells whoami to start listening on 2001 instead of 80
+       - --port=2001
+       - --name=iamfoo
       
 networks:
   customnetwork:
