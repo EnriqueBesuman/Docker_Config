@@ -24,7 +24,38 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Network UPS Tools
       - wud.display.icon=mdi:car-battery
-      
+
+###########
+# FRIGATE #
+###########
+#
+# http://192.168.1.254:5000
+
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable
+    container_name: frigate
+    restart: unless-stopped
+#   privileged: true # this may not be necessary for all setups
+#   shm_size: "64mb" # update for your cameras based on calculation above
+#   devices:
+#     - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
+#     - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here 
+#   https://coral.ai/docs/m2/get-started/#2a-on-linux
+#     - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+    ports:
+      - 5000:5000
+      - 1935:1935 # RTMP feeds
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /docker/frigate/config/config.yml:/config/config.yml:ro
+      - /docker/frigate/media:/media/frigate
+      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    environment:
+      FRIGATE_RTSP_PASSWORD: ${FRIGATE_PWD}
+
 ########
 # MQTT #
 ########
