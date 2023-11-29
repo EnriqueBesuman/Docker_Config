@@ -1,4 +1,4 @@
-# Ejecutar con: docker-compose -f docker-compose-portainer.yml up -d
+# Ejecutar con: docker-compose -p "portainer" -f portainer-compose.yaml up -d
 #
 # https://192.168.1.254:9443
 
