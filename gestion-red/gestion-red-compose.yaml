@@ -38,6 +38,8 @@ services:
 # https://github.com/pi-hole/docker-pi-hole/ 
 # https://docs.pi-hole.net/
 # Listas de bloqueo https://blocklist.site/
+#                   https://firebog.net/
+# Probador de bloqueo https://canyoublockit.com/
 #
 # - ESTABLECER CONTRASEÑA: pihole -a -p contraseña
 # - REINICIAR SERVICIO DNS: pihole restartdns
