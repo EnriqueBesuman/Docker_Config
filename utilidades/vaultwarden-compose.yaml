@@ -20,5 +20,5 @@ services:
 
 networks:
   default:
-    name: nginx_customnetwork
+    name: gestion-red_customnetwork
     external: true
