@@ -82,6 +82,10 @@ services:
        # It tells whoami to start listening on 2001 instead of 80
        - --port=2001
        - --name=iamfoo
+    labels: # Labels para What's up Docker
+      - wud.display.name=Whoami
+      - wud.display.icon=mdi:information-box-outline
+
       
 networks:
   customnetwork:
