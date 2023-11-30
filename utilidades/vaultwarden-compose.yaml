@@ -15,8 +15,8 @@ services:
       - ADMIN_TOKEN=${VAULT_TOKEN}
     labels: # Labels para What's up Docker
       - wud.display.name=Vaultwarden
-      #- wud.display.icon=mdi:lock-outline
-      - wud.display.icon=si:vaultwarden
+      - wud.display.icon=mdi:lock-outline
+      #- wud.display.icon=si:vaultwarden
 
 networks:
   default:
