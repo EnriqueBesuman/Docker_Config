@@ -24,6 +24,9 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Network UPS Tools
       - wud.display.icon=mdi:car-battery
+    labels: # Labels para What's up Docker
+      - wud.display.name=Nut-UPS
+      - wud.display.icon=mdi:car-battery
 
 ###########
 # FRIGATE #
@@ -55,6 +58,9 @@ services:
           size: 1000000000
     environment:
       FRIGATE_RTSP_PASSWORD: ${FRIGATE_PWD}
+    labels: # Labels para What's up Docker
+      - wud.display.name=Frigate
+      - wud.display.icon=mdi:cctv
 
 ########
 # MQTT #
