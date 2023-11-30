@@ -31,7 +31,7 @@ services:
       - WUD_TRIGGER_MQTT_WUD_PASSWORD=${MQTT_PWD}
       - WUD_TRIGGER_MQTT_WUD_HASS_ENABLED=true 
     labels: # Labels de What's up Docker
-      - wud.display.name="What's up Docker"
+      - wud.display.name=What's up Docker
       - wud.display.icon=mdi:train-car-container
 
 #############
