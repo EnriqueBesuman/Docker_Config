@@ -27,7 +27,7 @@ services:
       - TZ=Europe/Madrid
     labels: # Labels para What's up Docker
       - wud.display.name=Nginx
-      - wud.display.icon=mdi:arrow-decision
+      - wud.display.icon=si:nginx
 
 ##########
 # PIHOLE #
