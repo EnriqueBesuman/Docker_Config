@@ -35,11 +35,11 @@ services:
 #
 # https://192.168.1.254:831
 #
-# https://github.com/pi-hole/docker-pi-hole/ 
-# https://docs.pi-hole.net/
-# Listas de bloqueo https://blocklist.site/
-#                   https://firebog.net/
-# Probador de bloqueo https://canyoublockit.com/
+# Repo pihole: https://github.com/pi-hole/docker-pi-hole/ 
+# Documentación: https://docs.pi-hole.net/
+# Listas de bloqueo: https://firebog.net/
+# Probador de bloqueo: https://canyoublockit.com/
+# Consejos de privacidad: https://www.privacytools.io/
 #
 # - ESTABLECER CONTRASEÑA: pihole -a -p contraseña
 # - REINICIAR SERVICIO DNS: pihole restartdns
