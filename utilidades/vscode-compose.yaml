@@ -15,6 +15,7 @@ services:
     volumes:
       - /docker/vscode/config:/config
       - /docker/homeassistant/config:/config/workspace
+      - /docker/Docker_Config:/docker/Docker_Config
     environment:
       - TZ=Europe/Madrid
       - PUID=1000
