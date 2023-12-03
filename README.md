@@ -24,7 +24,7 @@ He decidido seguir las siguientes premisas en la instalación para mantenerla no
 - Para cada servicio instalado, se crea una regla de backup en **Duplicati**, que creará copias de seguridad en periódicas según cada caso
 > [!NOTE]
 > Ya iré poniendo cosillas para completar la guia...
-    
+
 </details>
 
 <details>
