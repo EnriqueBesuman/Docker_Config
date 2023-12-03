@@ -16,13 +16,13 @@ services:
       - /docker/vscode/config:/config
       - /docker/homeassistant/config:/HASS_Config
       - /docker/Docker_Config:/Docker_Config
-      - $HOME/.ssh:/home/builder/.ssh:rw
-      - $SSH_AUTH_SOCK:/ssh.socket
+      - "$HOME/.ssh:/home/builder/.ssh:rw"
+      - "$SSH_AUTH_SOCK:/ssh.socket"
     environment:
       - TZ=Europe/Madrid
       - PUID=1000
       - PGID=1000
-      - SSH_AUTH_SOCK=/ssh.socket
+      -"SSH_AUTH_SOCK=/ssh.socket"
 #      - DEFAULT_WORKSPACE=/config/workspace #optional
       - DEFAULT_WORKSPACE=/HASS_Config #optional
     labels: # Labels para What's up Docker
