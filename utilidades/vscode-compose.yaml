@@ -16,7 +16,7 @@ services:
       - /docker/vscode/config:/config
       - /docker/homeassistant/config:/HASS_Config
       - /docker/Docker_Config:/Docker_Config
-#      - "$HOME/.ssh:/home/builder/.ssh:rw"
+      - $HOME/.ssh:/config/.ssh
 #      - "$SSH_AUTH_SOCK:/ssh.socket"
     environment:
       - TZ=Europe/Madrid
