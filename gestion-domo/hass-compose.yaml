@@ -55,10 +55,10 @@ services:
           size: 1000000000
     environment:
       FRIGATE_RTSP_PASSWORD: ${FRIGATE_PWD}
-      MQTT_USR: ${MQTT_USR}
-      MQTT_PWD: ${MQTT_PWD}
-      RTSP_USR: ${RTSP_USR}
-      RTSP_PWD: ${RTSP_PWD}
+      FRIGATE_MQTT_USER: ${MQTT_USR}
+      FRIGATE_MQTT_PASSWORD: ${MQTT_PWD}
+      FRIGATE_RTSP_USER: ${RTSP_USR}
+      FRIGATE_RTSP_PASSWORD: ${RTSP_PWD}
     labels: # Labels para What's up Docker
       - wud.display.name=Frigate
       - wud.display.icon=mdi:cctv
