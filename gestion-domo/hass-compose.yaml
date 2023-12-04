@@ -54,7 +54,7 @@ services:
         tmpfs:
           size: 1000000000
     environment:
-      FRIGATE_RTSP_PASSWORD: ${FRIGATE_PWD}
+#      FRIGATE_RTSP_PASSWORD: ${FRIGATE_PWD}
       FRIGATE_MQTT_USER: ${MQTT_USR}
       FRIGATE_MQTT_PASSWORD: ${MQTT_PWD}
       FRIGATE_RTSP_USER: ${RTSP_USR}
