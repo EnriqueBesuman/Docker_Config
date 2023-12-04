@@ -29,7 +29,9 @@ services:
       - WUD_TRIGGER_MQTT_WUD_URL=${MQTT_URL}
       - WUD_TRIGGER_MQTT_WUD_USER=${MQTT_USR}
       - WUD_TRIGGER_MQTT_WUD_PASSWORD=${MQTT_PWD}
-      - WUD_TRIGGER_MQTT_WUD_HASS_ENABLED=true 
+      - WUD_TRIGGER_MQTT_WUD_HASS_ENABLED=true   
+      - WUD_TRIGGER_SMTP_GMAIL_SIMPLETITLE=Hay una nueva versión de $${name} disponible!
+      - WUD_TRIGGER_SMTP_GMAIL_SIMPLEBODY=La imagen $${name} $${local} ha sido actualizada a la &&{remote}. Por favor, actualizala y reejecuta el contenedor. Gracias!
     labels: # Labels de What's up Docker
       - wud.display.name=What's up Docker
       - wud.display.icon=mdi:train-car-container
