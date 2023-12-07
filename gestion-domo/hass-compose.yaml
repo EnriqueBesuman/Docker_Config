@@ -146,3 +146,8 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Home Assistant
       - wud.display.icon=mdi:home-assistant
+      
+networks:
+  default:
+    name: gestion-red_customnetwork
+    external: true
