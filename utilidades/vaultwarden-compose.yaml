@@ -1,5 +1,10 @@
-# https://www.manelrodero.com/blog/instalacion-de-vaultwarden-en-docker
-
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# http://192.168.1.254:5005
+# https://vault.mykasa.mooo.com
+#
+# Documentación: https://www.manelrodero.com/blog/instalacion-de-vaultwarden-en-docker
+#
 version: "3.8"
 
 services:
@@ -10,7 +15,9 @@ services:
     volumes:
       - /docker/vaultwarden/config:/data/
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - DOMAIN=${VAULT_URL}
       - ADMIN_TOKEN=${VAULT_TOKEN}
     labels: # Labels para What's up Docker

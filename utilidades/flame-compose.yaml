@@ -1,3 +1,5 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 # http://192.168.1.254:5005
 #
 version: "3.8"
@@ -14,6 +16,9 @@ services:
       - /docker/flame/config:/app/data
       - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration feature
     environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - PASSWORD=${FLAME_PWD}
     labels: # Labels para What's up Docker
       - wud.display.name=Flame

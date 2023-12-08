@@ -1,3 +1,9 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# http://192.168.1.254:3001
+#
+# Documentación: https://blog.parravidales.es/como-monitorizar-tu-nube-personal-con-uptime-kuma/
+#
 version: "3.8"
 
 services:
@@ -10,4 +16,9 @@ services:
     volumes:
       - /docker/kuma:/app/data
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    labels:
+      - wud.display.name=Uptime Kuma
+      - wud.display.icon=si:kuma
