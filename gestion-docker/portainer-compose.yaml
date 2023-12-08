@@ -17,10 +17,10 @@ services:
     volumes:
       - /docker/portainer/config:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
+#    environment:
+#      - TZ=${TZ}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
     labels:
       - wud.display.name=Portainer
       - wud.display.icon=si:portainer
