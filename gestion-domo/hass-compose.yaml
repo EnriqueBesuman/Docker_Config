@@ -1,13 +1,16 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 version: "3.8"
 
 services:
+
 ############
 # NUT-UPSD #
 ############
 #
-#   https://blog.crstian.me/post/2022-08-05-integrar-sai-salicru-sps-500-one-en-home-assistant-con-docker/
-#   https://networkupstools.org/docs/man/genericups.html
-
+#  Instalación: https://blog.crstian.me/post/2022-08-05-integrar-sai-salicru-sps-500-one-en-home-assistant-con-docker/
+#  Documentación: https://networkupstools.org/docs/man/genericups.html
+#
   nut-upsd:
     image: upshift/nut-upsd
     container_name: nut-upsd
@@ -15,7 +18,9 @@ services:
     ports:
       - 3493:3493
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - UPS_DRIVER=blazer_usb
       - API_USER=upsmon # Opcional, este es el user por defecto
       - API_PASSWORD=secret # Opcional, esta es la password por defecto
@@ -30,7 +35,7 @@ services:
 ###########
 #
 # http://192.168.1.254:5000
-
+#
   frigate:
     image: ghcr.io/blakeblackshear/frigate:stable
     container_name: frigate
@@ -54,10 +59,13 @@ services:
         tmpfs:
           size: 1000000000
     environment: # No cambiar los nombres de las variables, Frigate espera estas y no otras...
-      FRIGATE_MQTT_USER: ${MQTT_USR}
-      FRIGATE_MQTT_PASSWORD: ${MQTT_PWD}
-      FRIGATE_RTSP_USER: ${RTSP_USR}
-      FRIGATE_RTSP_PASSWORD: ${RTSP_PWD}
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - FRIGATE_MQTT_USER=${MQTT_USR}
+      - FRIGATE_MQTT_PASSWORD=${MQTT_PWD}
+      - FRIGATE_RTSP_USER=${RTSP_USR}
+      - FRIGATE_RTSP_PASSWORD=${RTSP_PWD}
     labels: # Labels para What's up Docker
       - wud.display.name=Frigate
       - wud.display.icon=mdi:cctv
@@ -66,8 +74,9 @@ services:
 # MQTT #
 ########
 #
-# https://www.youtube.com/watch?v=on9JfmpaUJ0&list=PLIr0LNE5Lat2RifKJbH2xaqIHPuFEpYnf&index=7
+# Documentación: https://www.youtube.com/watch?v=on9JfmpaUJ0&list=PLIr0LNE5Lat2RifKJbH2xaqIHPuFEpYnf&index=7
 # https://www.homeautomationguy.io/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant/
+#
   mqtt:
     image: eclipse-mosquitto
     container_name: mqtt
@@ -80,7 +89,9 @@ services:
       - /docker/mqtt/data:/mosquitto/data
       - /docker/mqtt/log:/mosquitto/log
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     labels: # Labels para What's up Docker
       - wud.display.name=MQTT
       - wud.display.icon=si:mqtt
@@ -90,7 +101,7 @@ services:
 ###############
 #
 # http://192.168.1.254:833
-
+#
   zigbee2mqtt:
     depends_on: [mqtt]
     image: koenkk/zigbee2mqtt
@@ -103,7 +114,9 @@ services:
       - /docker/zigbee2mqtt/data:/app/data
       - /run/udev:/run/udev:ro
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
     labels: # Labels para What's up Docker
@@ -115,6 +128,7 @@ services:
 #################
 #
 # https://https://192.168.1.254:8123/
+# https://ha.mykasa.mooo.com
 #
 # - Eliminar entidades sin identificador único:
 #   Ejecutar servicio "Recorder: Purge Entities"
@@ -126,7 +140,7 @@ services:
 # 
 # - Notificaciones push:
 #   https://www.home-assistant.io/integrations/html5
-
+#
   hass:
     depends_on: 
       - nut-upsd
@@ -142,10 +156,12 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock #Necesario para Monitor Docker
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     labels: # Labels para What's up Docker
       - wud.display.name=Home Assistant
-      - wud.display.icon=mdi:home-assistant
+      - wud.display.icon=si:homeassistant
       
 networks:
   default:
