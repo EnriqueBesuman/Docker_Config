@@ -18,8 +18,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock # Para monitorizar contenedores
     environment:
       - TZ=${TZ}
-#      - PUID=${PUID}
-#      - PGID=${PGID}
+#      - PUID=${PUID} # Con UID 1000 no se integra con Docker...
+#      - PGID=${PGID} # Con GID 1000 no se integra con Docker...
     labels:
       - wud.display.name=Uptime Kuma
       - wud.display.icon=si:kuma
