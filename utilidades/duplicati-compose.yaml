@@ -1,0 +1,22 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# https://192.168.1.254:8200
+#
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: "duplicati"
+    restart: unless-stopped
+    ports:
+      - "8200:8200"
+    volumes:
+      - /docker/duplicati/config:/config
+      - /docker/BACKUPS:/backups
+      - /docker:/docker
+    environment:
+      - TZ=${TZ}
+      - PUID=0 # Importante mantener ID de root para evitar errores de acceso a los archivos
+      - PGID=0
+      - CLI_ARGS= # optional
+    labels: # Labels para What's up Docker
+      - wud.display.name=Duplicati
+      - wud.display.icon=mdi:cloud-upload-outline
