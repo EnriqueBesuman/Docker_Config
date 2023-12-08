@@ -15,6 +15,7 @@ services:
       - 3001:3001
     volumes:
       - /docker/kuma:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock # Para monitorizar contenedores
     environment:
       - TZ=${TZ}
       - PUID=${PUID}
