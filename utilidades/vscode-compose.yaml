@@ -1,3 +1,5 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 # http://192.168.1.254:8443
 #
 # Documentación: https://hub.docker.com/r/linuxserver/code-server
@@ -19,10 +21,10 @@ services:
       - /docker/Docker_Swarm_Config:/Docker_Swarm_Config
       - /home/kike/.ssh:/config/.ssh # Necesario para acceso write a los repos Github
     environment:
-      - TZ=Europe/Madrid
-      - PUID=1000
-      - PGID=1000
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - DEFAULT_WORKSPACE=/HASS_Config #optional
     labels: # Labels para What's up Docker
       - wud.display.name=Visual Code
-      - wud.display.icon=mdi:file-code
+      - wud.display.icon=si:visualstudiocode
