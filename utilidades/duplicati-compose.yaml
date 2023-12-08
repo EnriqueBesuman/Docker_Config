@@ -2,6 +2,10 @@
 #
 # https://192.168.1.254:8200
 #
+version: "3.8"
+
+services:
+
   duplicati:
     image: lscr.io/linuxserver/duplicati:latest
     container_name: "duplicati"
@@ -13,7 +17,7 @@
       - /docker/BACKUPS:/backups
       - /docker:/docker
     environment:
-#      - TZ=${TZ}
+      - TZ=${TZ}
       - PUID=0 # Importante mantener ID de root para evitar errores de acceso a los archivos
       - PGID=0
       - CLI_ARGS= # optional
