@@ -1,3 +1,5 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 version: "3.8"
 
 services:
@@ -7,7 +9,7 @@ services:
 ###################
 #
 # https://192.168.1.254:3000
-
+#
   whatsupdocker:
     image: fmartinou/whats-up-docker
     container_name: whatsupdocker
@@ -17,7 +19,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /docker/whatsupdocker/config/:/store
     environment:
-      - TZ=Europe/Paris      
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - WUD_REGISTRY_LSCR_TOKEN=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      
       - WUD_TRIGGER_SMTP_GMAIL_HOST=smtp.gmail.com
       - WUD_TRIGGER_SMTP_GMAIL_PORT=465
@@ -35,28 +39,3 @@ services:
     labels: # Labels de What's up Docker
       - wud.display.name=What's up Docker
       - wud.display.icon=mdi:train-car-container
-
-#############
-# DUPLICATI #
-#############
-#
-# https://192.168.1.254:8200
-
-  duplicati:
-    image: lscr.io/linuxserver/duplicati:latest
-    container_name: "duplicati"
-    restart: unless-stopped
-    ports:
-      - "8200:8200"
-    volumes:
-      - /docker/duplicati/config:/config
-      - /docker/BACKUPS:/backups
-      - /docker:/docker
-    environment:
-      - TZ=Europe/Madrid
-      - PUID=0 # Importante mantener ID de root para evitar errores de acceso a los archivos
-      - PGID=0
-      - CLI_ARGS= # optional
-    labels: # Labels para What's up Docker
-      - wud.display.name=Duplicati
-      - wud.display.icon=mdi:cloud-upload-outline
