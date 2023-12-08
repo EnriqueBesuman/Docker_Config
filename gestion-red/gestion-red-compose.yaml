@@ -67,8 +67,8 @@ services:
       - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
     environment:
       - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
       - WEB_PORT=831
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
