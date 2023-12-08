@@ -26,7 +26,7 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-    command: YACReaderLibraryServer create-library "Comic 10" /comics
+    command: /bin/sh -c "YACReaderLibraryServer create-library 'Comic 10' /comics"
     labels: # Labels para What's up Docker
       - wud.display.name=YACServer
       - wud.display.icon=mdi:emoticon-happy-outline
