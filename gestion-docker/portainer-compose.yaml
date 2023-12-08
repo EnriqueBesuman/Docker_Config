@@ -1,4 +1,4 @@
-# Descargar raw con: wget https://raw.githubusercontent.com/EnriqueBesuman/Docker_Config/main/gestion-docker/portainer-compose.yaml -N
+# Descargar raw con: wget -q https://raw.githubusercontent.com/EnriqueBesuman/Docker_Config/main/gestion-docker/portainer-compose.yaml -O portainer-compose.yaml
 # Ejecutar con: docker-compose -p "portainer" -f portainer-compose.yaml up -d
 #
 # https://192.168.1.254:9443 
