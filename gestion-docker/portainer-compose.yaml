@@ -1,7 +1,8 @@
+# Descargar raw con: https://raw.githubusercontent.com/EnriqueBesuman/Docker_Config/main/gestion-docker/portainer-compose.yaml
 # Ejecutar con: docker-compose -p "portainer" -f portainer-compose.yaml up -d
 #
 # https://192.168.1.254:9443
-
+#
 version: "3.2"
 
 services:
@@ -16,6 +17,10 @@ services:
     volumes:
       - /docker/portainer/config:/data
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     labels:
       - wud.display.name=Portainer
       - wud.display.icon=si:portainer
