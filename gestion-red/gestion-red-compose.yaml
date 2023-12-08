@@ -1,13 +1,17 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 version: "3.8"
 
 services:
+
 #########
 # NGINX #
 #########
 #
 # http://192.168.1.254:81
 #
-# https://hub.docker.com/_/nginx
+# Documentación: https://hub.docker.com/_/nginx
+#
 
   nginx:
     image: jc21/nginx-proxy-manager:latest
@@ -24,7 +28,9 @@ services:
       - /docker/nginx/config:/data
       - /docker/nginx/letsencrypt:/etc/letsencrypt
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     labels: # Labels para What's up Docker
       - wud.display.name=Nginx
       - wud.display.icon=si:nginx
@@ -54,18 +60,21 @@ services:
     #  - 53:53/udp
     #  - 67:67/udp # Only required if you are using Pi-hole as your DHCP server
     #  - 8080:80/tcp # Interfaz web
+    #
     network_mode: host
     volumes:
       - /docker/pihole/config:/etc/pihole
       - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
       - WEB_PORT=831
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     labels: # Labels para What's up Docker
       - wud.display.name=Pi Hole
-      - wud.display.icon=mdi:pi-hole
+      - wud.display.icon=si:pihole
 
 ##########
 # WHOAMI #
@@ -74,10 +83,14 @@ services:
 # https://192.168.1.254:2001
 #
 # https://hub.docker.com/r/traefik/whoami
-
+#
   whoami:
     image: traefik/whoami
-    container_name: whoami    
+    container_name: whoami
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     command:
        # It tells whoami to start listening on 2001 instead of 80
        - --port=2001
