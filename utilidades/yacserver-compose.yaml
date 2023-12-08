@@ -1,3 +1,5 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 # https://192.168.1.254:6969
 #
 # - Crear una nueva librería:
@@ -8,6 +10,7 @@
 #   docker exec yacserver YACReaderLibraryServer list-libraries
 # - Eliminar una librería:
 #   docker exec yacserver YACReaderLibraryServer remove-library <library-name>
+#
 version: "3.8"
 
 services:
@@ -20,7 +23,9 @@ services:
     volumes:
       - /COMIC/COMIC10:/comics
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
 #    command: YACReaderLibraryServer create-library "Comic 10" /comics
     labels: # Labels para What's up Docker
       - wud.display.name=YACServer

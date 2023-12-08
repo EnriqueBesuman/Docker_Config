@@ -1,5 +1,7 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
 # https://192.168.1.254:7171
-
+#
 version: "3.8"
 
 services:
@@ -14,7 +16,9 @@ services:
       - /COMIC/PRUEBAS:/imports
       - /docker/comixed/database:/root/.comixed 
     environment:
-      - TZ=Europe/Madrid
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
     labels: # Labels para What's up Docker
       - wud.display.name=ComiXed
       - wud.display.icon=mdi:emoticon-happy-outline
