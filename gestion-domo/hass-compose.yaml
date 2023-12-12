@@ -138,8 +138,11 @@ services:
 #    En la consola del contenedor de HA: wget -O - https://get.hacs.xyz | bash -
 #    Añadir integración HACS
 # 
-# - Notificaciones push:
-#   https://www.home-assistant.io/integrations/html5
+# - Notificaciones push: https://www.home-assistant.io/integrations/html5
+#
+# - Lista de colores: https://www.rapidtables.com/web/color/RGB_Color.html
+# - Iconos Material Design: https://materialdesignicons.com/
+# - Iconos Simple Icons: https://simpleicons.org/
 #
   hass:
     depends_on: 

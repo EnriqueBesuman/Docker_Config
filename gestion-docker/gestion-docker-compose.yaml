@@ -11,7 +11,7 @@ services:
 # https://192.168.1.254:3000
 #
   whatsupdocker:
-    image: fmartinou/whats-up-docker
+    image: fmartinou/whats-up-docker:latest
     container_name: whatsupdocker
     ports:
       - 3000:3000
@@ -22,7 +22,7 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-      - WUD_REGISTRY_LSCR_TOKEN=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      
+      - WUD_REGISTRY_LSCR_TOKEN=${WUD_REGISTRY_LSCR_TOKEN}      
       - WUD_TRIGGER_SMTP_GMAIL_HOST=smtp.gmail.com
       - WUD_TRIGGER_SMTP_GMAIL_PORT=465
       - WUD_TRIGGER_SMTP_GMAIL_USER=${EMAIL_PERSONAL}
