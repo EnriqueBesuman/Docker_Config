@@ -42,7 +42,7 @@ services:
 # https://192.168.1.254:831
 #
 # Repo pihole: https://github.com/pi-hole/docker-pi-hole/ 
-# Documentación: https://docs.pi-hole.net/
+# Documentación: https://www.techaddressed.com/tutorials/install-pi-hole-docker/
 # Listas de bloqueo: https://firebog.net/
 # Probador de bloqueo: https://canyoublockit.com/
 # Consejos de privacidad: https://www.privacytools.io/
