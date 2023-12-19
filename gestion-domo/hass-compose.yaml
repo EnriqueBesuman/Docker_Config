@@ -36,6 +36,9 @@ services:
 #
 # http://192.168.1.254:5000
 #
+# Solución para el sonido cámaras Imou: https://github.com/blakeblackshear/frigate/issues/2506
+# ConfigTool para configurar H.264: https://dahuawiki.com/ConfigTool
+#
   frigate:
     image: ghcr.io/blakeblackshear/frigate:stable
     container_name: frigate
