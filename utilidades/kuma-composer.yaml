@@ -11,6 +11,8 @@ services:
     image: louislam/uptime-kuma:latest
     container_name: kuma
     restart: always
+    security_opt:
+      - no-new-privileges:true
     ports:
       - 3001:3001
     volumes:
@@ -23,3 +25,10 @@ services:
     labels:
       - wud.display.name=Uptime Kuma
       - wud.display.icon=si:kuma
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.80.0/20
