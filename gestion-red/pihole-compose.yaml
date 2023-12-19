@@ -41,7 +41,7 @@ services:
       - wud.display.name=Pi Hole
       - wud.display.icon=si:pihole
       
-networks:
-  default:
-    name: nginx_proxy
-    external: true
+#networks:
+#  default:
+#    name: nginx_proxy
+#    external: true
