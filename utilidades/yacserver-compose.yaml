@@ -14,10 +14,13 @@
 version: "3.8"
 
 services:
+
   yacserver:
     image: muallin/yacreaderlibrary-server-docker:latest
     container_name: yacserver
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     ports:
       - 6969:8080
     volumes:
@@ -30,3 +33,10 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=YACServer
       - wud.display.icon=mdi:emoticon-happy-outline
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.112.0/20
