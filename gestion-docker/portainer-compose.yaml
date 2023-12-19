@@ -12,13 +12,15 @@ services:
     container_name: portainer
     hostname: portainer
     restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
     ports:
       - 9443:9443
     volumes:
       - /docker/portainer/config:/data
       - /var/run/docker.sock:/var/run/docker.sock
-#    environment:
-#      - TZ=${TZ}
+    environment:
+      - TZ=${TZ}
 #      - PUID=${PUID}
 #      - PGID=${PGID}
     labels:
