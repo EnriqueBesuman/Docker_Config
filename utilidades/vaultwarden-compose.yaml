@@ -8,10 +8,13 @@
 version: "3.8"
 
 services:
+
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     volumes:
       - /docker/vaultwarden/config:/data/
     environment:
@@ -26,5 +29,5 @@ services:
 
 networks:
   default:
-    name: gestion-red_customnetwork
+    name: nginx_proxy
     external: true
