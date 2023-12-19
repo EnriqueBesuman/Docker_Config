@@ -14,7 +14,7 @@ services:
     - no-new-privileges:true
     ports:
       - 833:8080
-#    network_mode: host
+    network_mode: host
     volumes:
       - /docker/zigbee2mqtt/data:/app/data
       - /run/udev:/run/udev:ro
