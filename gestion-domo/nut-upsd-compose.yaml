@@ -1,0 +1,40 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+version: "3.8"
+
+services:
+
+############
+# NUT-UPSD #
+############
+#
+#  Instalación: https://blog.crstian.me/post/2022-08-05-integrar-sai-salicru-sps-500-one-en-home-assistant-con-docker/
+#  Documentación: https://networkupstools.org/docs/man/genericups.html
+#
+  nut-upsd:
+    image: upshift/nut-upsd
+    container_name: nut-upsd
+    restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
+    ports:
+      - 3493:3493
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UPS_DRIVER=blazer_usb
+      - API_USER=upsmon # Opcional, este es el user por defecto
+      - API_PASSWORD=secret # Opcional, esta es la password por defecto
+    devices:
+      - /dev/bus/usb/001/007 # Para obtner el ubs: lsusb
+    labels: # Labels para What's up Docker
+      - wud.display.name=Network UPS Tools
+      - wud.display.icon=mdi:car-battery
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.10.0/20
