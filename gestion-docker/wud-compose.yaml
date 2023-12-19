@@ -1,15 +1,11 @@
 # https://github.com/EnriqueBesuman/Docker_Config
 #
+# https://192.168.1.254:3000
+#
 version: "3.8"
 
 services:
 
-###################
-# WHATS UP DOCKER #
-###################
-#
-# https://192.168.1.254:3000
-#
   wud:
     image: fmartinou/whats-up-docker:latest
     container_name: wud
