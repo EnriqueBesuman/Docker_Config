@@ -1,0 +1,46 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# http://192.168.1.254:5000
+#
+# Solución para el sonido cámaras Imou: https://github.com/blakeblackshear/frigate/issues/2506
+# ConfigTool para configurar H.264: https://dahuawiki.com/ConfigTool
+#
+version: "3.8"
+
+services:
+
+  frigate:
+    image: ghcr.io/blakeblackshear/frigate:stable
+    container_name: frigate
+    restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
+    ports:
+      - 5000:5000
+      - 1935:1935 # RTMP feeds
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /docker/frigate/config/config.yml:/config/config.yml:ro
+      - /docker/frigate/media:/media/frigate
+      - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
+        target: /tmp/cache
+        tmpfs:
+          size: 1000000000
+    environment: # No cambiar los nombres de las variables, Frigate espera estas y no otras...
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - FRIGATE_MQTT_USER=${MQTT_USR}
+      - FRIGATE_MQTT_PASSWORD=${MQTT_PWD}
+      - FRIGATE_RTSP_USER=${RTSP_USR}
+      - FRIGATE_RTSP_PASSWORD=${RTSP_PWD}
+    labels: # Labels para What's up Docker
+      - wud.display.name=Frigate
+      - wud.display.icon=mdi:cctv
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.32.0/20
