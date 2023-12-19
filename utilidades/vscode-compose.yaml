@@ -12,6 +12,8 @@ services:
     image: lscr.io/linuxserver/code-server
     container_name: vscode
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     ports:
       - 8443:8443
     volumes:
