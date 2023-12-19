@@ -1,0 +1,39 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# http://192.168.1.254:81
+#
+# Documentación: https://hub.docker.com/_/nginx
+#
+version: "3.8"
+
+services:
+
+  nginx:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx
+    restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
+    ports:
+      - 81:81
+      - 80:80
+      - 443:443
+    networks:
+      proxy:
+        ipv4_address: 172.200.0.2 # Asignamos IP fija para permitir configuración de proxies de Home Assistant
+    volumes:
+      - /docker/nginx/config:/data
+      - /docker/nginx/letsencrypt:/etc/letsencrypt
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    labels: # Labels para What's up Docker
+      - wud.display.name=Nginx
+      - wud.display.icon=si:nginx
+      
+networks:
+  proxy:
+    ipam:
+      config:
+        - subnet: 172.200.0.0/16
