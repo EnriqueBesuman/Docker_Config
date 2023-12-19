@@ -15,6 +15,8 @@ services:
     image: upshift/nut-upsd
     container_name: nut-upsd
     restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
     ports:
       - 3493:3493
     environment:
@@ -43,13 +45,8 @@ services:
     image: ghcr.io/blakeblackshear/frigate:stable
     container_name: frigate
     restart: unless-stopped
-#   privileged: true # this may not be necessary for all setups
-#   shm_size: "64mb" # update for your cameras based on calculation above
-#   devices:
-#     - /dev/bus/usb:/dev/bus/usb # passes the USB Coral, needs to be modified for other versions
-#     - /dev/apex_0:/dev/apex_0 # passes a PCIe Coral, follow driver instructions here 
-#   https://coral.ai/docs/m2/get-started/#2a-on-linux
-#     - /dev/dri/renderD128 # for intel hwaccel, needs to be updated for your hardware
+    security_opt:
+    - no-new-privileges:true
     ports:
       - 5000:5000
       - 1935:1935 # RTMP feeds
@@ -84,6 +81,8 @@ services:
     image: eclipse-mosquitto
     container_name: mqtt
     restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
     ports:
       - 1883:1883
       - 9001:9001
@@ -110,6 +109,8 @@ services:
     image: koenkk/zigbee2mqtt
     container_name: zigbee2mqtt
     restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
     ports:
       - 833:8080
 #    network_mode: host
@@ -154,6 +155,8 @@ services:
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: hass
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     ports: 
       - 8123:8123
     network_mode: host
