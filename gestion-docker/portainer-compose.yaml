@@ -26,3 +26,11 @@ services:
     labels:
       - wud.display.name=Portainer
       - wud.display.icon=si:portainer
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.21.0/20
+          gateway: 192.168.21.1
