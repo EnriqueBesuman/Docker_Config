@@ -6,7 +6,7 @@ version: "3.8"
 
 services:
   zigbee2mqtt:
-    depends_on: [mqtt]
+#    depends_on: [mqtt]
     image: koenkk/zigbee2mqtt
     container_name: zigbee2mqtt
     restart: unless-stopped
