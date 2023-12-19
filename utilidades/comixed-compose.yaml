@@ -9,6 +9,8 @@ services:
     image: comixed/comixed:latest
     container_name: "comixed"
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     ports:
       - 7171:7171
     volumes:
@@ -22,3 +24,10 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=ComiXed
       - wud.display.icon=mdi:emoticon-happy-outline
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.176.0/20
