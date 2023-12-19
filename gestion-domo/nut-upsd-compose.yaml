@@ -27,7 +27,7 @@ services:
       - API_USER=upsmon # Opcional, este es el user por defecto
       - API_PASSWORD=secret # Opcional, esta es la password por defecto
     devices:
-      - /dev/bus/usb/001/009 # Para obtner el ubs: lsusb
+      - /dev/bus/usb/001/007 # Para obtner el ubs: lsusb
     labels: # Labels para What's up Docker
       - wud.display.name=Network UPS Tools
       - wud.display.icon=mdi:car-battery
