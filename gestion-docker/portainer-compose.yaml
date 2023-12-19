@@ -33,4 +33,3 @@ networks:
       driver: default
       config:
         - subnet: 192.168.21.0/20
-          gateway: 192.168.21.1

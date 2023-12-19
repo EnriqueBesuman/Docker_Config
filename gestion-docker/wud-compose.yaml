@@ -10,7 +10,7 @@ services:
 #
 # https://192.168.1.254:3000
 #
-  whatsupdocker:
+  wud:
     image: fmartinou/whats-up-docker:latest
     container_name: wud
     restart: unless-stopped
