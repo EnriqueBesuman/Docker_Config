@@ -1,0 +1,37 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# Documentación: https://www.youtube.com/watch?v=on9JfmpaUJ0&list=PLIr0LNE5Lat2RifKJbH2xaqIHPuFEpYnf&index=7
+# https://www.homeautomationguy.io/docker-tips/configuring-the-mosquitto-mqtt-docker-container-for-use-with-home-assistant/
+#
+version: "3.8"
+
+services:
+
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - /docker/mqtt/config:/mosquitto/config
+      - /docker/mqtt/data:/mosquitto/data
+      - /docker/mqtt/log:/mosquitto/log
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+    labels: # Labels para What's up Docker
+      - wud.display.name=MQTT
+      - wud.display.icon=si:mqtt
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.130.0/20
+
