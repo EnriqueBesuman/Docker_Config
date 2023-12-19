@@ -10,6 +10,8 @@ services:
     image: pawelmalak/flame:latest
     container_name: flame
     restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
     ports:
       - 5005:5005
     volumes:
@@ -23,3 +25,10 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Flame
       - wud.display.icon=mdi:fire-circle
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.192.0/20
