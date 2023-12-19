@@ -22,9 +22,9 @@ version: "3.8"
 services:
 
   hass:
-    depends_on: 
-      - nut-upsd
-      - zigbee2mqtt
+#    depends_on: 
+#      - nut-upsd
+#      - zigbee2mqtt
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: hass
     restart: unless-stopped
