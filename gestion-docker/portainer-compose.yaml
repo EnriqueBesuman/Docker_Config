@@ -20,7 +20,7 @@ services:
       - /docker/portainer/config:/data
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - TZ=${TZ}
+      - TZ=Europe/Madrid
 #      - PUID=${PUID}
 #      - PGID=${PGID}
     labels:
