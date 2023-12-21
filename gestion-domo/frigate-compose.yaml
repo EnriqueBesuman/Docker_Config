@@ -28,8 +28,8 @@ services:
           size: 1000000000
     environment: # No cambiar los nombres de las variables, Frigate espera estas y no otras...
       - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
       - FRIGATE_MQTT_USER=${MQTT_USR}
       - FRIGATE_MQTT_PASSWORD=${MQTT_PWD}
       - FRIGATE_RTSP_USER=${RTSP_USR}
