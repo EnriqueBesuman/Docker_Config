@@ -26,8 +26,8 @@ services:
       - /docker/nginx/letsencrypt:/etc/letsencrypt
     environment:
       - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
     labels: # Labels para What's up Docker
       - wud.display.name=Nginx
       - wud.display.icon=si:nginx
