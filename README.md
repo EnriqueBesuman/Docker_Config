@@ -1,5 +1,5 @@
 # Configuración del server de My Kasa
-
+ 
 | Componente| Configuración |
 |----------:|---------------|
 |Equipo|**[HP EliteDesk 800 G2 Desktop Mini](https://www.amazon.es/gp/product/B081TB2SZ1)**|
