@@ -28,15 +28,15 @@ services:
       - wud.display.name=ZigBee2Mqtt
       - wud.display.icon=si:zigbee
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     ipam:
       driver: default
       config:
         - subnet: 192.168.144.0/20
-
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"

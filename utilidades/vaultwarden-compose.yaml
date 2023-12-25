@@ -27,13 +27,13 @@ services:
       - wud.display.name=Vaultwarden
       - wud.display.icon=si:vaultwarden
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     name: nginx_proxy
     external: true
-
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"

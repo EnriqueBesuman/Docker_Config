@@ -26,15 +26,15 @@ services:
       - wud.display.name=Uptime Kuma
       - wud.display.icon=si:kuma
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     ipam:
       driver: default
       config:
         - subnet: 192.168.80.0/20
-
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"

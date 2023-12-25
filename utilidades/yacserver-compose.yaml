@@ -34,15 +34,15 @@ services:
       - wud.display.name=YACServer
       - wud.display.icon=mdi:emoticon-happy-outline
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     ipam:
       driver: default
       config:
         - subnet: 192.168.112.0/20
-
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"

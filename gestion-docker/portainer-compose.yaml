@@ -27,6 +27,12 @@ services:
       - wud.display.name=Portainer
       - wud.display.icon=si:portainer
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     ipam:
@@ -34,8 +40,3 @@ networks:
       config:
         - subnet: 192.168.21.0/20
 
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"

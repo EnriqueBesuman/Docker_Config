@@ -38,15 +38,15 @@ services:
       - wud.display.name=Frigate
       - wud.display.icon=mdi:cctv
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     ipam:
       driver: default
       config:
         - subnet: 192.168.32.0/20
-
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"

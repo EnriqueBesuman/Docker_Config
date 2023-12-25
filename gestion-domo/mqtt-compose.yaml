@@ -28,15 +28,15 @@ services:
       - wud.display.name=MQTT
       - wud.display.icon=si:mqtt
 
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 networks:
   default:
     ipam:
       driver: default
       config:
         - subnet: 192.168.130.0/20
-
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"
