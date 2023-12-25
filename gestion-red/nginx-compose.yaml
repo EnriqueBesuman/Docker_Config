@@ -37,3 +37,9 @@ networks:
     ipam:
       config:
         - subnet: 172.200.0.0/16
+
+logging:
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"

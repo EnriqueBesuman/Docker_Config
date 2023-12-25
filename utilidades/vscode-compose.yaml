@@ -37,3 +37,9 @@ networks:
       driver: default
       config:
         - subnet: 192.168.70.0/20
+
+logging:
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
