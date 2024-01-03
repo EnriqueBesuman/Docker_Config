@@ -24,7 +24,7 @@ services:
     ports:
       - 6969:8080
     volumes:
-      - /COMIC/COMIC10:/comics
+      - /PRUEBAS_COMICS:/comics
     environment:
       - TZ=${TZ}
       - PUID=${PUID}

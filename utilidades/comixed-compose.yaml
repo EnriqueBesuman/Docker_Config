@@ -14,8 +14,8 @@ services:
     ports:
       - 7171:7171
     volumes:
-      - /COMIC/PRUEBAS:/library
-      - /COMIC/PRUEBAS:/imports
+      - /PRUEBAS_COMICS:/library
+      - /PRUEBAS_COMICS:/imports
       - /docker/comixed/database:/root/.comixed 
     environment:
       - TZ=${TZ}
