@@ -35,6 +35,7 @@ services:
 #      - PUID=${PUID}
 #      - PGID=${PGID}
       - WEB_PORT=831
+      - CORS_HOSTS=pihole.mykasa,pihole.mykasa.mooo.com
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     labels: # Labels para What's up Docker
