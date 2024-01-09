@@ -13,10 +13,7 @@ services:
     image: ghcr.io/blakeblackshear/frigate:stable
     container_name: frigate
     restart: unless-stopped
-    cap_add:
-      - CAP_PERFMON
-    security_opt:
-    - no-new-privileges:true
+    privileged: true
     ports:
       - "5000:5000"
       - "1935:1935" # RTMP feeds
