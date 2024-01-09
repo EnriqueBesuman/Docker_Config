@@ -16,11 +16,14 @@ services:
     security_opt:
     - no-new-privileges:true
     ports:
-      - 5000:5000
-      - 1935:1935 # RTMP feeds
+      - "5000:5000"
+      - "1935:1935" # RTMP feeds
+      - "8554:8554" # RTSP feeds
+      - "8555:8555/tcp" # WebRTC over tcp
+      - "8555:8555/udp" # WebRTC over udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /docker/frigate/config/config.yml:/config/config.yml:ro
+      - /docker/frigate/config/:/config/
       - /docker/frigate/media:/media/frigate
       - type: tmpfs # Optional: 1GB of memory, reduces SSD/SD Card wear
         target: /tmp/cache
