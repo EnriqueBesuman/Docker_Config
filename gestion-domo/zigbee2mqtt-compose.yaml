@@ -1,5 +1,7 @@
 # https://github.com/EnriqueBesuman/Docker_Config
 #
+# Instalación: https://www.manelrodero.com/blog/instalacion-de-zigbee2mqtt-en-docker
+#
 # http://192.168.1.254:833
 #
 version: "3.8"
@@ -7,14 +9,14 @@ version: "3.8"
 services:
   zigbee2mqtt:
 #    depends_on: [mqtt]
-    image: koenkk/zigbee2mqtt
+    image: koenkk/zigbee2mqtt:stable
     container_name: zigbee2mqtt
     restart: unless-stopped
-    security_opt:
-    - no-new-privileges:true
+#    security_opt:
+#    - no-new-privileges:true
     ports:
       - 833:8080
-    network_mode: host
+#    network_mode: host
     volumes:
       - /docker/zigbee2mqtt/data:/app/data
       - /run/udev:/run/udev:ro
@@ -23,7 +25,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
     devices:
-      - /dev/ttyACM0:/dev/ttyACM0
+      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20220810150154-if00:/dev/ttyACM0
     labels: # Labels para What's up Docker
       - wud.display.name=ZigBee2Mqtt
       - wud.display.icon=si:zigbee
