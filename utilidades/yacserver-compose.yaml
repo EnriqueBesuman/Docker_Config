@@ -16,7 +16,8 @@ version: "3.8"
 services:
 
   yacserver:
-    image: muallin/yacreaderlibrary-server-docker:latest
+#    image: muallin/yacreaderlibrary-server-docker:latest
+    image: xthursdayx/yacreaderlibrary-server-docker:latest
     container_name: yacserver
     restart: unless-stopped
     security_opt:
@@ -24,6 +25,7 @@ services:
     ports:
       - 6969:8080
     volumes:
+      - /docker/yacreader/config:/config
       - /PRUEBAS_COMICS:/comics
     environment:
       - TZ=${TZ}
