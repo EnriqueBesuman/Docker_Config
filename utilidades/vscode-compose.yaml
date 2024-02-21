@@ -9,7 +9,7 @@ version: "3.8"
 services:
    
   vscode:
-    image: lscr.io/linuxserver/code-server
+    image: lscr.io/linuxserver/code-server:latest
     container_name: vscode
     restart: unless-stopped
     security_opt:
@@ -26,7 +26,10 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
+      - PASSWORD=password 
       - DEFAULT_WORKSPACE=/HASS_Config #optional
+      - CS_DISABLE_GETTING_STARTED_OVERRIDE=true
+
     labels: # Labels para What's up Docker
       - wud.display.name=Visual Code
       - wud.display.icon=si:visualstudiocode
