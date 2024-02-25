@@ -18,10 +18,11 @@ services:
       - 8443:8443
     volumes:
       - /docker/vscode/config:/config
-      - /docker/homeassistant/config:/HASS_Config #Añadir las rutas locales a todos los repos que queramos
-      - /docker/Docker_Config:/Docker_Config
-      - /docker/Docker_Swarm_Config:/Docker_Swarm_Config
       - /home/userdocker/.ssh:/config/.ssh # Necesario para acceso write a los repos Github
+      - /docker/homeassistant/config:/repos/HASS_Config #Añadir las rutas locales a todos los repos que queramos
+      - /home/kike/repos/Docker_Config:/repos/Docker_Config
+      - /home/kike/repos/Docker_Swarm_Config:/repos/Docker_Swarm_Config
+      - /home/kike/repos/blueprints:/repos/blueprints # Necesario para acceso write a los repos Github
     environment:
       - TZ=${TZ}
       - PUID=${PUID}
