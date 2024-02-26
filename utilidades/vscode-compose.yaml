@@ -20,9 +20,9 @@ services:
       - /docker/vscode/config:/config
       - /home/userdocker/.ssh:/config/.ssh # Necesario para acceso write a los repos Github
       - /docker/homeassistant/config:/repos/HASS_Config #Añadir las rutas locales a todos los repos que queramos
-      - /repos/Docker_Config:/repos/Docker_Config
-      - /repos/Docker_Swarm_Config:/repos/Docker_Swarm_Config
-      - /repos/blueprints:/repos/blueprints # Necesario para acceso write a los repos Github
+      - /home/userdocker/repos/Docker_Config:/repos/Docker_Config
+      - /home/userdocker/repos/Docker_Swarm_Config:/repos/Docker_Swarm_Config
+      - /home/userdocker/repos/blueprints:/repos/blueprints # Necesario para acceso write a los repos Github
     environment:
       - TZ=${TZ}
       - PUID=${PUID}
