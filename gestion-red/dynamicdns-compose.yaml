@@ -1,0 +1,42 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# Documentación: https://github.com/joweisberg/docker-dynamic-dns
+#
+version: "3.5"
+
+services:
+
+  dynamicdns:
+    container_name: dynamicdns
+    image: joweisberg/dynamic-dns:latest
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+      - USER=${FREEDNS_USR}
+      - PASSWORD=${FREEDNS_PASSWORD}
+      - SERVICE=freedns
+      - HOSTNAME=${HOSTNAME}
+      - DETECTIP=1
+      - INTERVAL=10
+    healthcheck:
+      test: ["CMD", "/usr/bin/healthcheck"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+    labels: # Labels para What's up Docker
+      - wud.display.name=DynamicDNS
+      - wud.display.icon=mdi:dns-outline
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.160.0/20
