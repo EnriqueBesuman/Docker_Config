@@ -17,13 +17,20 @@ services:
 #      - PUID=${PUID}
 #      - PGID=${PGID}
     ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 784:784/udp
-      - 853:853/tcp
-      - 3000:3000/tcp
-      - 80:80/tcp
-      - 443:443/tcp
+      - 53:53/tcp # plain DNS.
+      - 53:53/udp # plain DNS.
+      - 784:784/udp # add if you are going to run AdGuard Home as a DNS-over-QUIC server
+      - 853:853/tcp # add if you are going to run AdGuard Home as a DNS-over-TLS server
+#      - 5443:5443/udp # add if you are going to run AdGuard Home as a DNSCrypt server
+      - 3000:3000/tcp # add if you are going to use AdGuard Home's admin panel as well as run AdGuard Home as an HTTPS/DNS-over-HTTPS server
+      - 80:80/tcp # add if you are going to use AdGuard Home's admin panel as well as run AdGuard Home as an HTTPS/DNS-over-HTTPS server
+      - 443:443/tcp # add if you are going to use AdGuard Home's admin panel as well as run AdGuard Home as an HTTPS/DNS-over-HTTPS serve
+#      - 67:67/udp # Only to use AdGuard Home as a DHCP server
+#      - 68:68/tcp # Only to use AdGuard Home as a DHCP server 
+#      - 68:68/udp # Only to use AdGuard Home as a DHCP server
+#      - 5443:5443/tcp # # add if you are going to run AdGuard Home as a DNSCrypt server  
+#      - 5443:5443/udp # add if you are going to run AdGuard Home as a DNSCrypt server
+#    network_mode: host # Only to use AdGuard Home as a DHCP server
     volumes:
       - /docker/adwardhome/work:/opt/adguardhome/work
       - /docker/adwardhome/config:/opt/adguardhome/conf
