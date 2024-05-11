@@ -17,7 +17,7 @@ services:
       - SERVICE=freedns
       - HOSTNAME=${FREEDNS_HOSTNAME}
       - DETECTIP=1
-      - INTERVAL=10
+      - INTERVAL=10 # Minutos
     healthcheck:
       test: ["CMD", "/usr/bin/healthcheck"]
       interval: 30s
