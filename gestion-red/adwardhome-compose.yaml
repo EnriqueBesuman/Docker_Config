@@ -2,7 +2,9 @@
 #
 # https://192.168.1.254:3000
 #
-# repo Adward Home: https://hub.docker.com/r/adguard/adguardhome
+# Repo Adward Home: https://hub.docker.com/r/adguard/adguardhome
+# Documentación: https://cyberhost.uk/adguard-setup/
+#
 version: "3"
 
 services:
