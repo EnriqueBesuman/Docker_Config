@@ -1,0 +1,43 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# https://192.168.1.254:3000
+#
+# repo Adward Home: https://hub.docker.com/r/adguard/adguardhome
+version: "3"
+
+services:
+
+  adguardhome:
+
+    image: adguard/adguardhome
+    container_name: "adguardhome"
+    restart: unless-stopped
+    environment:
+      - TZ=${TZ}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 784:784/udp
+      - 853:853/tcp
+      - 3000:3000/tcp
+      - 80:80/tcp
+      - 443:443/tcp
+    volumes:
+      - /docker/adwardhome/work:/opt/adguardhome/work
+      - /docker/adwardhome/config:/opt/adguardhome/conf
+    labels: # Labels para What's up Docker
+      - wud.display.name=Adward Home
+      - wud.display.icon=mdi:block-helper
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  default:
+    name: adwardhome
+    external: true
