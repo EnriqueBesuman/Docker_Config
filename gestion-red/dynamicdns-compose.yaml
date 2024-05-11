@@ -15,7 +15,7 @@ services:
       - USER=${FREEDNS_USR}
       - PASSWORD=${FREEDNS_PASSWORD}
       - SERVICE=freedns
-      - HOSTNAME=${HOSTNAME}
+      - HOSTNAME=${FREEDNS_HOSTNAME}
       - DETECTIP=1
       - INTERVAL=10
     healthcheck:
