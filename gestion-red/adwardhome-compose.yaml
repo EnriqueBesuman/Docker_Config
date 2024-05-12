@@ -46,7 +46,7 @@ services:
         max-size: "10m"
         max-file: "3"
 
-#networks:
-#  default:
-#    name: adwardhome
-#    external: true
+networks:
+  default:
+    name: nginx_proxy
+    external: true
