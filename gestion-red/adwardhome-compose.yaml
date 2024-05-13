@@ -18,7 +18,7 @@ services:
       - TZ=${TZ}
 #      - PUID=${PUID}
 #      - PGID=${PGID}
-    ports:    
+#    ports:    
       # Plain DNS
 #      - 53:53/tcp # plain DNS.
 #      - 53:53/udp # plain DNS.
