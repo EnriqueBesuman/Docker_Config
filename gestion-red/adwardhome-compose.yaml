@@ -20,8 +20,8 @@ services:
 #      - PGID=${PGID}
     ports:    
       # Plain DNS
-      - 53:53/tcp # plain DNS.
-      - 53:53/udp # plain DNS.
+#      - 53:53/tcp # plain DNS.
+#      - 53:53/udp # plain DNS.
       # DNS-over-QUIC
 #      - 784:784/udp 
 #      - 853:853/udp
