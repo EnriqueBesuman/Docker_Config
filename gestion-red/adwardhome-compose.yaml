@@ -18,18 +18,18 @@ services:
       - TZ=${TZ}
 #      - PUID=${PUID}
 #      - PGID=${PGID}
-#    ports:    
+    ports:    
       # Plain DNS
-#      - 53:53/tcp # plain DNS.
-#      - 53:53/udp # plain DNS.
+      - 53:53/tcp # plain DNS.
+      - 53:53/udp # plain DNS.
       # DNS-over-QUIC
 #      - 784:784/udp 
 #      - 853:853/udp
       # DNS-over-TLS
 #      - 853:853/tcp
       # AdGuard Home Admin Panel as well as DNS-over-HTTPS
-#      - 3000:3000/tcp 
-#      - 8080:80/tcp
+      - 3000:3000/tcp # Configuración inicial
+      - 8080:80/tcp # Administración web
 #      - 443:443/tcp
       # Only DHCP server 
 #      - 67:67/udp 
@@ -38,7 +38,7 @@ services:
       # DNSCrypt
 #      - 5443:5443/tcp 
 #      - 5443:5443/udp 
-#    network_mode: host 
+    network_mode: host 
     volumes:
       - /docker/adwardhome/work:/opt/adguardhome/work
       - /docker/adwardhome/config:/opt/adguardhome/conf
