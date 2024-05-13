@@ -38,7 +38,7 @@ services:
       # DNSCrypt
 #      - 5443:5443/tcp 
 #      - 5443:5443/udp 
-    network_mode: host 
+#    network_mode: host 
     volumes:
       - /docker/adwardhome/work:/opt/adguardhome/work
       - /docker/adwardhome/config:/opt/adguardhome/conf
