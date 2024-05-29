@@ -9,7 +9,7 @@ version: "3.8"
 services:
 
   musicassistant:
-    image: ghcr.io/music-asssistant/server
+    image: ghcr.io/music-assistant/server
     container_name: musicassistant
     restart: unless-stopped
     privileged: true
