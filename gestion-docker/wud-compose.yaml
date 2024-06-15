@@ -35,7 +35,7 @@ services:
       - WUD_TRIGGER_MQTT_WUD_PASSWORD=${MQTT_PWD}
       - WUD_TRIGGER_MQTT_WUD_HASS_ENABLED=true   
       - WUD_TRIGGER_SMTP_GMAIL_SIMPLETITLE=Hay una nueva versión de $${name} disponible!
-      - WUD_TRIGGER_SMTP_GMAIL_SIMPLEBODY=El contenedor $${name} ha sido actualizado a la versión $${major}. Por favor, recréalo con Portainer cuando puedas... Gracias!
+      - WUD_TRIGGER_SMTP_GMAIL_SIMPLEBODY=El contenedor $${name} ha sido actualizado. Por favor, recréalo con Portainer cuando puedas... Gracias!
     labels: # Labels de What's up Docker
       - wud.display.name=Wud
       - wud.display.icon=mdi:docker
