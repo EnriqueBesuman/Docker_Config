@@ -26,6 +26,7 @@ services:
     labels:
       - wud.display.name=Portainer
       - wud.display.icon=si:portainer
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

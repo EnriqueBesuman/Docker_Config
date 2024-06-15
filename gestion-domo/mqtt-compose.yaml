@@ -26,7 +26,8 @@ services:
       - PGID=${PGID}
     labels: # Labels para What's up Docker
       - wud.display.name=MQTT
-      - wud.display.icon=si:mqtt
+      - wud.display.icon=si:zigbee2mqtt
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

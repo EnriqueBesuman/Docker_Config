@@ -31,6 +31,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Network UPS Tools
       - wud.display.icon=mdi:car-battery
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

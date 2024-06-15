@@ -25,6 +25,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Whoami
       - wud.display.icon=mdi:information-box-outline
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

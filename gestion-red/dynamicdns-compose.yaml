@@ -27,6 +27,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=DynamicDNS
       - wud.display.icon=mdi:dns-outline
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

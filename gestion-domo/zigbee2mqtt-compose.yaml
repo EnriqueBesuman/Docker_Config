@@ -29,6 +29,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=ZigBee2Mqtt
       - wud.display.icon=si:zigbee
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

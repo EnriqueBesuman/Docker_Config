@@ -39,6 +39,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Frigate
       - wud.display.icon=mdi:cctv
+      - wud.tag.include=stable
 
     logging:
       driver: "json-file"

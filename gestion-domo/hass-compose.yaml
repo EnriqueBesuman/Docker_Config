@@ -44,6 +44,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Home Assistant
       - wud.display.icon=si:homeassistant
+      - wud.tag.include=stable
 
     logging:
       driver: "json-file"

@@ -29,8 +29,9 @@ services:
 #      - PUID=${PUID}
 #      - PGID=${PGID}
     labels: # Labels para What's up Docker
-      - wud.display.name=Nginx
+      - wud.display.name=Nginx Proxy Manager
       - wud.display.icon=si:nginx
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

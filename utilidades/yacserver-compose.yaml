@@ -35,6 +35,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=YACServer
       - wud.display.icon=mdi:emoticon-happy-outline
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

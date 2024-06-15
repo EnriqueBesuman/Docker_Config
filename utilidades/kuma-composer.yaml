@@ -23,8 +23,9 @@ services:
 #      - PUID=${PUID} # Con UID 1000 no se integra con Docker...
 #      - PGID=${PGID} # Con GID 1000 no se integra con Docker...
     labels:
-      - wud.display.name=Uptime Kuma
+      - wud.display.name=Kuma
       - wud.display.icon=si:kuma
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

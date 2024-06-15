@@ -24,6 +24,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=ComiXed
       - wud.display.icon=mdi:emoticon-happy-outline
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

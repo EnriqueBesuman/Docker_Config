@@ -21,7 +21,8 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-      - WUD_REGISTRY_LSCR_TOKEN=${WUD_REGISTRY_LSCR_TOKEN}      
+      - WUD_REGISTRY_LSCR_TOKEN=${WUD_REGISTRY_LSCR_TOKEN}   
+      - WUD_WATCHER_LOCAL_CRON=0 1 * * *   
       - WUD_TRIGGER_SMTP_GMAIL_HOST=smtp.gmail.com
       - WUD_TRIGGER_SMTP_GMAIL_PORT=465
       - WUD_TRIGGER_SMTP_GMAIL_USER=${EMAIL_PERSONAL}
@@ -34,10 +35,11 @@ services:
       - WUD_TRIGGER_MQTT_WUD_PASSWORD=${MQTT_PWD}
       - WUD_TRIGGER_MQTT_WUD_HASS_ENABLED=true   
       - WUD_TRIGGER_SMTP_GMAIL_SIMPLETITLE=Hay una nueva versión de $${name} disponible!
-      - WUD_TRIGGER_SMTP_GMAIL_SIMPLEBODY=El contenedor $${name} ha sido actualizado. Por favor, recréalo con Portainer cuando puedas... Gracias!
+      - WUD_TRIGGER_SMTP_GMAIL_SIMPLEBODY=El contenedor $${name} ha sido actualizado a la versión $${major}. Por favor, recréalo con Portainer cuando puedas... Gracias!
     labels: # Labels de What's up Docker
-      - wud.display.name=What's up Docker
-      - wud.display.icon=mdi:train-car-container
+      - wud.display.name=Wud
+      - wud.display.icon=mdi:docker
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"

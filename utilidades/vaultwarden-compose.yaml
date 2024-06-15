@@ -26,6 +26,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Vaultwarden
       - wud.display.icon=si:vaultwarden
+      - wud.tag.include=latest
 
     logging:
       driver: "json-file"
