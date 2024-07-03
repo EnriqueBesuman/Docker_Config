@@ -25,6 +25,7 @@ services:
 #    depends_on: 
 #      - nut-upsd
 #      - zigbee2mqtt
+#      - nginx
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: hass
     restart: unless-stopped

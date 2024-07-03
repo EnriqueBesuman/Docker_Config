@@ -10,6 +10,8 @@ version: "3.8"
 services:
 
   vaultwarden:
+#    depends_on: 
+#      - nginx
     image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
