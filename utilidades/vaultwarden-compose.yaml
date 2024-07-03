@@ -17,6 +17,7 @@ services:
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
+    network_mode: host
     volumes:
       - /docker/vaultwarden/config:/data/
     environment:
