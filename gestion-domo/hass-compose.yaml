@@ -23,9 +23,13 @@ services:
 
   hass:
 #    depends_on: 
-#      - nut-upsd
-#      - zigbee2mqtt
 #      - nginx
+#      - nut-upsd
+#      - mqtt
+#      - zigbee2mqtt
+#      - frigate
+#      - wud
+#      - vscode
     image: ghcr.io/home-assistant/home-assistant:stable
     container_name: hass
     restart: unless-stopped
