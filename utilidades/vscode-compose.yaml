@@ -34,6 +34,7 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=VSCode
       - wud.display.icon=mdi:microsoft-visual-studio-code
+      - wud.tag.include=latest
     logging:
       driver: "json-file"
       options:
