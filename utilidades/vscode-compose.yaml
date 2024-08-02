@@ -30,11 +30,10 @@ services:
       - PASSWORD=${VSCODE_PWD}
       - DEFAULT_WORKSPACE=/HASS_Config #optional
       - CS_DISABLE_GETTING_STARTED_OVERRIDE=true
-
     labels: # Labels para What's up Docker
       - wud.display.name=VSCode
       - wud.display.icon=mdi:microsoft-visual-studio-code
-      - wud.tag.include=latest
+      
     logging:
       driver: "json-file"
       options:

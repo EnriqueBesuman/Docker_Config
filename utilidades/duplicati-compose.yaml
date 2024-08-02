@@ -22,11 +22,11 @@ services:
       - TZ=${TZ}
       - PUID=0 # Importante mantener ID de root para evitar errores de acceso a los archivos
       - PGID=0
-      - CLI_ARGS= # optional
+      - CLI_ARGS=
     labels: # Labels para What's up Docker
       - wud.display.name=Duplicati
       - wud.display.icon=mdi:cloud-upload-outline
-      - wud.tag.include=latest
+      
     logging:
       driver: "json-file"
       options:
