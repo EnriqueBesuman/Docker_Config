@@ -26,7 +26,8 @@ services:
     labels: # Labels para What's up Docker
       - wud.display.name=Duplicati
       - wud.display.icon=mdi:cloud-upload-outline
-      
+      - wud.tag.include=latest
+
     logging:
       driver: "json-file"
       options:

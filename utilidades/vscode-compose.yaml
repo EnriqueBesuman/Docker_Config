@@ -32,7 +32,8 @@ services:
       - CS_DISABLE_GETTING_STARTED_OVERRIDE=true
     labels: # Labels para What's up Docker
       - wud.display.name=VSCode
-      - wud.display.icon=mdi:microsoft-visual-studio-code
+      - wud.display.icon=mdi:file-code-outline
+      - wud.tag.include=latest
       
     logging:
       driver: "json-file"
