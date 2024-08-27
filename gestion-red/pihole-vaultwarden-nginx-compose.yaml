@@ -1,0 +1,134 @@
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# http://192.168.1.254:81
+#
+# Documentación: https://hub.docker.com/_/nginx
+#
+version: "3.8"
+
+services:
+
+  nginx:
+    image: jc21/nginx-proxy-manager:latest
+    container_name: nginx
+    restart: unless-stopped
+    security_opt:
+    - no-new-privileges:true
+    ports:
+      - 81:81
+      - 80:80
+      - 443:443
+    networks:
+      proxy:
+        ipv4_address: 172.200.0.2 # Asignamos IP fija para permitir configuración de proxies de Home Assistant
+    volumes:
+      - /docker/nginx/config:/data
+      - /docker/nginx/letsencrypt:/etc/letsencrypt
+    environment:
+      - TZ=${TZ}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+    labels: # Labels para What's up Docker
+      - wud.display.name=Nginx Proxy Manager
+      - wud.display.icon=si:nginx
+      - wud.tag.include=latest
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# https://192.168.1.254:831
+#
+# Repo pihole: https://github.com/pi-hole/docker-pi-hole/ 
+# Documentación: https://www.techaddressed.com/tutorials/install-pi-hole-docker/
+# Listas de bloqueo: https://firebog.net/
+# Probador de bloqueo: https://canyoublockit.com/
+# Consejos de privacidad: https://www.privacytools.io/
+#
+# - ESTABLECER CONTRASEÑA: pihole -a -p contraseña
+# - REINICIAR SERVICIO DNS: pihole restartdnsversion: "3.8"
+#
+
+  pihole:
+#    depends_on: 
+#      - nginx
+    image: pihole/pihole:latest
+    container_name: "pihole"
+    restart: unless-stopped
+#    security_opt:
+#      - no-new-privileges:true
+    # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
+    #ports:
+    #  - 53:53/tcp
+    #  - 53:53/udp
+    #  - 67:67/udp # Only required if you are using Pi-hole as your DHCP server
+    #  - 8080:80/tcp # Interfaz web
+    #
+    network_mode: host
+    volumes:
+      - /docker/pihole/config:/etc/pihole
+      - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
+    environment:
+      - TZ=${TZ}
+#      - PUID=${PUID}
+#      - PGID=${PGID}
+      - WEB_PORT=831
+      - CORS_HOSTS=pihole.mykasa,pihole.mykasa.mooo.com
+    cap_add:
+      - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+    labels: # Labels para What's up Docker
+      - wud.display.name=Pi-Hole
+      - wud.display.icon=si:pihole
+      - wud.tag.include=latest
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# https://github.com/EnriqueBesuman/Docker_Config
+#
+# http://192.168.1.254:5005
+# https://vault.mykasa.mooo.com
+#
+# Documentación: https://www.manelrodero.com/blog/instalacion-de-vaultwarden-en-docker
+#
+
+  vaultwarden:
+#    depends_on: 
+#      - nginx
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /docker/vaultwarden/config:/data/
+    environment:
+      - TZ=${TZ}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - DOMAIN=${VAULT_URL}
+      - ADMIN_TOKEN=${VAULT_TOKEN}
+    labels: # Labels para What's up Docker
+      - wud.display.name=Vaultwarden
+      - wud.display.icon=si:vaultwarden
+      - wud.tag.include=latest
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  proxy:
+    ipam:
+      config:
+        - subnet: 172.200.0.0/16
