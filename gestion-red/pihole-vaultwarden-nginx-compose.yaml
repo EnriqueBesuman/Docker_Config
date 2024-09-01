@@ -39,6 +39,11 @@ services:
         max-size: "10m"
         max-file: "3"
 
+networks:
+  proxy:
+    ipam:
+      config:
+        - subnet: 172.200.0.0/16
 
 # https://github.com/EnriqueBesuman/Docker_Config
 #
@@ -69,7 +74,11 @@ services:
     #  - 67:67/udp # Only required if you are using Pi-hole as your DHCP server
     #  - 8080:80/tcp # Interfaz web
     #
-    network_mode: host
+    network_mode: 
+      default:
+      name: nginx_proxy
+      external: true
+
     volumes:
       - /docker/pihole/config:/etc/pihole
       - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
@@ -106,6 +115,10 @@ services:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
+    network_mode: 
+      default:
+      name: nginx_proxy
+      external: true
     security_opt:
       - no-new-privileges:true
     volumes:
@@ -126,9 +139,3 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-
-networks:
-  proxy:
-    ipam:
-      config:
-        - subnet: 172.200.0.0/16
