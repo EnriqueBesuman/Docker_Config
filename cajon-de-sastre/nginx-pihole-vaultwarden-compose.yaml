@@ -19,8 +19,9 @@ services:
       - 80:80
       - 443:443
     networks:
-      proxy:
-        ipv4_address: 172.200.0.2 # Asignamos IP fija para permitir configuración de proxies de Home Assistant
+      - nginx-network:
+        proxy:
+          ipv4_address: 172.200.0.2 # Asignamos IP fija para permitir configuración de proxies de Home Assistant
     volumes:
       - /docker/nginx/config:/data
       - /docker/nginx/letsencrypt:/etc/letsencrypt
@@ -28,6 +29,7 @@ services:
       - TZ=${TZ}
 #      - PUID=${PUID}
 #      - PGID=${PGID}
+
     labels: # Labels para What's up Docker
       - wud.display.name=Nginx Proxy Manager
       - wud.display.icon=si:nginx
@@ -39,6 +41,10 @@ services:
         max-size: "10m"
         max-file: "3"
 
+networks:
+  npm:
+    name: nginx-network
+    driver: bridge
 # https://github.com/EnriqueBesuman/Docker_Config
 #
 # https://192.168.1.254:831
@@ -58,7 +64,7 @@ services:
 #      - nginx
     image: pihole/pihole:latest
     container_name: "pihole"
-    restart: unless-stopped
+    restart: always
 #    security_opt:
 #      - no-new-privileges:true
     # For DHCP it is recommended to remove these ports and instead add: network_mode: "host"
@@ -68,7 +74,7 @@ services:
     #  - 67:67/udp # Only required if you are using Pi-hole as your DHCP server
     #  - 8080:80/tcp # Interfaz web
     #
-    network_mode: host
+#    network_mode: host
     volumes:
       - /docker/pihole/config:/etc/pihole
       - /docker/pihole/dnsmasq.d:/etc/dnsmasq.d
@@ -80,6 +86,7 @@ services:
       - CORS_HOSTS=pihole.mykasa,pihole.mykasa.mooo.com
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
+
     labels: # Labels para What's up Docker
       - wud.display.name=Pi-Hole
       - wud.display.icon=si:pihole
@@ -91,6 +98,13 @@ services:
         max-size: "10m"
         max-file: "3"
 
+    networks:
+      - nginx-network
+
+networks:
+  npm:
+    name: nginx-network
+    driver: bridge
 # https://github.com/EnriqueBesuman/Docker_Config
 #
 # http://192.168.1.254:5005
