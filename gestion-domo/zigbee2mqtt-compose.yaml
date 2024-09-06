@@ -24,8 +24,8 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-    devices:
-      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20220810150154-if00:/dev/ttyACM0
+#    devices:
+#      - /dev/serial/by-id/usb-ITEAD_SONOFF_Zigbee_3.0_USB_Dongle_Plus_V2_20220810150154-if00:/dev/ttyACM0
     labels: # Labels para What's up Docker
       - wud.display.name=ZigBee2Mqtt
       - wud.display.icon=si:zigbee
